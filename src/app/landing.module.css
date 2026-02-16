@@ -400,6 +400,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 12px;
+  align-items: stretch;
 }
 
 .corePlan,
@@ -408,6 +409,8 @@
   border: 1px solid var(--line);
   border-radius: 16px;
   padding: 16px;
+  display: flex;
+  flex-direction: column;
 }
 
 .corePlan {
@@ -443,8 +446,17 @@
   line-height: 1.72;
 }
 
+.planFeatures {
+  flex: 1;
+}
+
+.planButton {
+  margin-top: 14px;
+  align-self: flex-start;
+}
+
 .note {
-  margin: 12px 0 0;
+  margin: auto 0 0;
   color: #526276;
   font-size: 0.9rem;
 }

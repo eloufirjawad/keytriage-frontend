@@ -63,36 +63,40 @@ const steps = [
 
 const faq = [
   {
-    q: 'Is this safe for customer-facing support?',
-    a: 'Yes. KeyTriage does not store passwords, private keys, biometric templates, or raw WebAuthn credentials.'
+    q: 'How is pricing structured for a small support team?',
+    a: 'Pricing is per workspace: $99/month for core workflow, with an optional +$99/month AI add-on when you are ready.'
   },
   {
-    q: 'Do agents need separate onboarding?',
-    a: 'No. Admin connects once; agents authenticate via Zendesk and use the app inside tickets.'
+    q: 'Do we need separate accounts for each agent?',
+    a: 'No. Admin connects once, and agents authenticate through Zendesk. No extra password management is required.'
   },
   {
-    q: 'Can we start without AI?',
-    a: 'Yes. The core workflow is deterministic and production-ready. AI is an optional upgrade later.'
+    q: 'Can we run this as a non-AI micro-SaaS first?',
+    a: 'Yes. The core plan is fully usable without AI: debug links, packets, classification, macros, and escalation.'
   },
   {
-    q: 'How long does setup take for a new workspace?',
-    a: 'Most teams complete setup in under 10 minutes: install app, connect Zendesk, and run the first packet flow.'
+    q: 'Is this multi-tenant by Zendesk workspace?',
+    a: 'Yes. Each Zendesk subdomain maps to its own tenant workspace with isolated settings and analytics.'
   },
   {
-    q: 'Will all agents in our Zendesk account get access?',
-    a: 'Yes. After admin onboarding, agent users can access the app in Zendesk and use the same standardized workflow.'
+    q: 'What data does KeyTriage avoid collecting?',
+    a: 'It does not store passwords, private keys, biometric templates, or raw WebAuthn credential payloads.'
   },
   {
-    q: 'Does KeyTriage replace our existing macros and processes?',
-    a: 'No. It strengthens your current support process by adding structured diagnosis, better macro targeting, and cleaner escalations.'
+    q: 'How fast can we go live?',
+    a: 'Most teams can complete setup in about 10 minutes and run the first ticket triage flow immediately.'
   },
   {
-    q: 'Can we monitor team performance over time?',
-    a: 'Yes. The dashboard tracks packet completion, top failure categories, escalation rates, and ticket-resolution trends.'
+    q: 'Can we track ROI and team performance?',
+    a: 'Yes. You can monitor packet completion, top failure categories, escalation rate, and resolution trends.'
   },
   {
-    q: 'Is this suitable for MVP rollout today?',
-    a: 'Yes. The core plan is built for immediate operational use, with AI enhancement available as a later upgrade.'
+    q: 'Will this replace our Zendesk macros?',
+    a: 'It complements them. KeyTriage improves macro selection and timing using structured diagnosis output.'
+  },
+  {
+    q: 'Can we cancel or upgrade later?',
+    a: 'Yes. Start with core, validate operational value, then upgrade to AI when the team is ready.'
   }
 ]
 
@@ -227,21 +231,21 @@ const LandingPage = () => {
           <article className={styles.corePlan}>
             <h3>Core Plan</h3>
             <p className={styles.price}>$99<span>/month</span></p>
-            <ul>
+            <ul className={styles.planFeatures}>
               <li>Zendesk sidebar app</li>
               <li>Debug link and packet workflow</li>
               <li>Rule-based diagnosis</li>
               <li>Macro + escalation actions</li>
               <li>Team analytics dashboard</li>
             </ul>
-            <Link href='/register' className={styles.primaryButton}>
+            <Link href='/register' className={`${styles.primaryButton} ${styles.planButton}`}>
               Start Core Plan
             </Link>
           </article>
           <article className={styles.addonPlan}>
             <h3>AI Add-on</h3>
             <p className={styles.price}>+$99<span>/month</span></p>
-            <ul>
+            <ul className={styles.planFeatures}>
               <li>Richer diagnosis narratives and suggestions</li>
               <li>Response draft generation</li>
               <li>Priority escalation intelligence</li>
