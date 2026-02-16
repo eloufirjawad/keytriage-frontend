@@ -4,172 +4,164 @@ import Link from 'next/link'
 import styles from './landing.module.css'
 
 const heroImage =
-  'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=75'
+  'https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1800&q=75'
 
-const showcaseImages = [
+const imagePanels = [
   {
-    src: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1200&q=75',
-    alt: 'Support and product team collaboration',
-    title: 'Cross-team handoff clarity',
-    summary: 'Escalations carry complete context instead of guesswork.'
+    src: 'https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1400&q=75',
+    alt: 'Support operations team reviewing customer cases',
+    title: 'Clear handoffs between support and engineering',
+    text: 'Escalations include category, confidence, and debugging context in one packet.'
   },
   {
-    src: 'https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=75',
-    alt: 'Customer support workflow review',
-    title: 'Faster ticket investigation',
-    summary: 'Agents classify login failures in minutes, not hours.'
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=75',
-    alt: 'Analytics dashboard planning session',
-    title: 'Operational visibility for leads',
-    summary: 'Track trends by category, platform, and resolution path.'
+    src: 'https://images.unsplash.com/photo-1552581234-26160f608093?auto=format&fit=crop&w=1400&q=75',
+    alt: 'Analytics and dashboard review',
+    title: 'Team-level visibility without manual spreadsheets',
+    text: 'Leads monitor packet completion, top categories, escalations, and resolution patterns.'
   }
 ]
 
-const outcomeCards = [
+const benefitCards = [
   {
-    title: 'Lower escalations',
-    value: '-31%',
-    description: 'Agents solve more passkey issues at first touch with guided packet context.'
+    title: 'Structured packet evidence',
+    description: 'Stop ad hoc troubleshooting. Every ticket gets standardized context before action.'
   },
   {
-    title: 'Faster response cycle',
-    value: '2.7x',
-    description: 'Debug links and one-click macros remove repetitive triage back-and-forth.'
+    title: 'Macro-first resolution',
+    description: 'Insert public and internal responses from diagnosis output in one click.'
   },
   {
-    title: 'Cleaner support data',
-    value: '100%',
-    description: 'Every packet includes standardized evidence for analytics and QA reviews.'
+    title: 'Escalation discipline',
+    description: 'When a case needs engineering, your note is complete and immediately actionable.'
   }
 ]
 
-const workflowSteps = [
+const stats = [
+  { value: '10 min', label: 'setup time for first workspace' },
+  { value: '$99', label: 'monthly core plan per workspace' },
+  { value: '+$99', label: 'optional AI tier later' }
+]
+
+const steps = [
   {
-    title: 'Launch debug link',
-    text: 'Agent sends a secure packet link from the Zendesk sidebar.'
+    title: 'Agent sends debug link',
+    text: 'From the Zendesk sidebar app, no tab switching.'
   },
   {
-    title: 'Collect signal',
-    text: 'Customer submits symptom, environment, and optional screenshot.'
+    title: 'Customer submits packet',
+    text: 'Consent + symptom + device/browser context.'
   },
   {
-    title: 'Classify failure',
-    text: 'Rules return category, confidence, and recommended macro path.'
+    title: 'Rule engine classifies',
+    text: 'Category, confidence, and next best action.'
   },
   {
-    title: 'Resolve or escalate',
-    text: 'Insert public/internal notes or escalate with engineering-ready context.'
+    title: 'Agent resolves or escalates',
+    text: 'Macro insertion, tags, notes, and tracked outcomes.'
   }
 ]
 
-const faqItems = [
+const faq = [
   {
-    q: 'Do agents need a separate KeyTriage account?',
-    a: 'No. Zendesk admin connects once, then agents authenticate through Zendesk and can use the app inside tickets.'
+    q: 'Is this safe for customer-facing support?',
+    a: 'Yes. KeyTriage does not store passwords, private keys, biometric templates, or raw WebAuthn credentials.'
   },
   {
-    q: 'What sensitive data is stored?',
-    a: 'KeyTriage does not collect passwords, private keys, biometric templates, or raw WebAuthn credentials.'
+    q: 'Do agents need separate onboarding?',
+    a: 'No. Admin connects once; agents authenticate via Zendesk and use the app inside tickets.'
   },
   {
     q: 'Can we start without AI?',
-    a: 'Yes. The core $99 plan runs on deterministic rules and macro workflows. AI can be added later as an upgrade.'
+    a: 'Yes. The core workflow is deterministic and production-ready. AI is an optional upgrade later.'
   }
 ]
 
 const LandingPage = () => {
   return (
     <main className={styles.page}>
-      <div className={styles.glowLayer} aria-hidden />
-
-      <header className={styles.topbar}>
-        <div className={styles.brandWrap}>
-          <div className={styles.brand}>KeyTriage</div>
-          <span className={styles.brandTag}>for Zendesk support teams</span>
-        </div>
-        <nav className={styles.navLinks}>
-          <Link href='/register' className={styles.navGhost}>
-            Start Setup
-          </Link>
-          <Link href='/login' className={styles.navPrimary}>
-            Agent Login
-          </Link>
-        </nav>
-      </header>
-
-      <section className={styles.hero}>
-        <div className={styles.heroLead}>
-          <p className={styles.kicker}>Ticket diagnosis that actually scales</p>
-          <h1 className={styles.heroTitle}>Your team can resolve passkey tickets with confidence, not guesswork.</h1>
-          <p className={styles.heroSubtitle}>
-            KeyTriage standardizes investigation inside Zendesk: secure debug links, structured packets, rule-based
-            diagnosis, and one-click macro responses.
-          </p>
-          <div className={styles.heroStats}>
-            {outcomeCards.map(item => (
-              <div key={item.title} className={styles.heroStat}>
-                <strong>{item.value}</strong>
-                <span>{item.title}</span>
-              </div>
-            ))}
+      <section className={styles.masthead}>
+        <header className={styles.topbar}>
+          <div className={styles.logoWrap}>
+            <span className={styles.logo}>KeyTriage</span>
+            <span className={styles.logoHint}>Zendesk-first support diagnosis</span>
           </div>
-          <div className={styles.heroActions}>
-            <Link href='/register' className={styles.ctaPrimary}>
+          <nav className={styles.actionsTop}>
+            <Link href='/login' className={styles.ghostTop}>
+              Agent Login
+            </Link>
+            <Link href='/register' className={styles.primaryTop}>
               Create Workspace
             </Link>
-            <Link href='/login' className={styles.ctaSecondary}>
-              Open Existing Workspace
-            </Link>
-          </div>
-          <p className={styles.heroNote}>No SDK required. Admin connects once, agents get instant access.</p>
-        </div>
+          </nav>
+        </header>
 
-        <div className={styles.heroVisual}>
-          <div className={styles.heroImageFrame}>
-            <Image
-              src={heroImage}
-              alt='Support operations center reviewing authentication support tickets'
-              fill
-              priority
-              sizes='(max-width: 1024px) 100vw, 45vw'
-              className={styles.heroImage}
-            />
+        <div className={styles.heroGrid}>
+          <div className={styles.heroCopy}>
+            <p className={styles.eyebrow}>Support teams deserve better triage</p>
+            <h1>Make login and passkey tickets predictable across your entire team.</h1>
+            <p>
+              KeyTriage turns messy troubleshooting into a repeatable Zendesk workflow: debug link, packet capture,
+              classification, macro response, and escalation with context.
+            </p>
+            <div className={styles.heroButtons}>
+              <Link href='/register' className={styles.primaryButton}>
+                Connect Zendesk
+              </Link>
+              <Link href='/app/dashboard' className={styles.secondaryButton}>
+                View Dashboard
+              </Link>
+            </div>
+            <div className={styles.metricPills}>
+              {stats.map(item => (
+                <div key={item.label} className={styles.metricPill}>
+                  <strong>{item.value}</strong>
+                  <span>{item.label}</span>
+                </div>
+              ))}
+            </div>
           </div>
-          <div className={styles.floatCardTop}>
-            <p>Latest packet</p>
-            <strong>completed</strong>
-            <span>Category: BIOMETRIC_OR_DEVICE_LOCK_UNAVAILABLE</span>
-          </div>
-          <div className={styles.floatCardBottom}>
-            <p>Suggested action</p>
-            <strong>Insert Public Macro</strong>
-            <span>Escalate to engineering if confidence &lt; 0.45</span>
+
+          <div className={styles.heroVisual}>
+            <div className={styles.heroFrame}>
+              <Image
+                src={heroImage}
+                alt='Support team handling customer incidents'
+                fill
+                priority
+                sizes='(max-width: 980px) 100vw, 46vw'
+                className={styles.heroImage}
+              />
+            </div>
+            <div className={styles.ticketCard}>
+              <p>Ticket #4182</p>
+              <strong>Packet completed</strong>
+              <span>Category: BIOMETRIC_OR_DEVICE_LOCK_UNAVAILABLE</span>
+            </div>
+            <div className={styles.actionCard}>
+              <p>Next action</p>
+              <strong>Insert Public Macro</strong>
+              <span>Escalate to engineering when confidence is low.</span>
+            </div>
           </div>
         </div>
       </section>
 
-      <section className={styles.trustStrip}>
-        <p>Built around real Zendesk operations:</p>
-        <div className={styles.trustBadges}>
-          <span>Debug Links</span>
-          <span>Support Packets</span>
-          <span>Macro Insertion</span>
-          <span>Escalation Notes</span>
-          <span>Tenant Analytics</span>
-        </div>
+      <section className={styles.ribbon}>
+        <span>Debug Links</span>
+        <span>Support Packets</span>
+        <span>Macro Insertion</span>
+        <span>Engineering Escalation</span>
+        <span>Tenant Analytics</span>
       </section>
 
-      <section className={styles.section}>
-        <div className={styles.sectionHead}>
-          <p className={styles.sectionKicker}>Impact</p>
-          <h2>What changes when KeyTriage is in your workflow</h2>
+      <section className={styles.benefits}>
+        <div className={styles.sectionTitle}>
+          <p>Core advantages</p>
+          <h2>Designed for support speed, not technical complexity.</h2>
         </div>
-        <div className={styles.outcomeGrid}>
-          {outcomeCards.map(item => (
-            <article key={item.title} className={styles.outcomeCard}>
-              <p className={styles.outcomeValue}>{item.value}</p>
+        <div className={styles.benefitGrid}>
+          {benefitCards.map(item => (
+            <article key={item.title} className={styles.benefitCard}>
               <h3>{item.title}</h3>
               <p>{item.description}</p>
             </article>
@@ -177,79 +169,77 @@ const LandingPage = () => {
         </div>
       </section>
 
-      <section className={styles.workflowSection}>
-        <div className={styles.sectionHead}>
-          <p className={styles.sectionKicker}>Workflow</p>
-          <h2>One tight loop from ticket to resolution</h2>
-        </div>
-        <div className={styles.workflowGrid}>
-          {workflowSteps.map((step, index) => (
-            <article key={step.title} className={styles.stepCard}>
-              <span className={styles.stepIndex}>0{index + 1}</span>
-              <h3>{step.title}</h3>
-              <p>{step.text}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className={styles.gallerySection}>
-        {showcaseImages.map(item => (
-          <article key={item.src} className={styles.galleryCard}>
-            <div className={styles.galleryImageWrap}>
-              <Image src={item.src} alt={item.alt} fill sizes='(max-width: 1024px) 100vw, 32vw' className={styles.galleryImage} />
+      <section className={styles.panelShowcase}>
+        {imagePanels.map(item => (
+          <article key={item.src} className={styles.panelCard}>
+            <div className={styles.panelImageWrap}>
+              <Image src={item.src} alt={item.alt} fill sizes='(max-width: 980px) 100vw, 47vw' className={styles.panelImage} />
             </div>
-            <div className={styles.galleryCopy}>
+            <div className={styles.panelText}>
               <h3>{item.title}</h3>
-              <p>{item.summary}</p>
+              <p>{item.text}</p>
             </div>
           </article>
         ))}
       </section>
 
-      <section className={styles.pricingSection}>
-        <div className={styles.sectionHead}>
-          <p className={styles.sectionKicker}>Pricing</p>
-          <h2>Start lean, add AI when you are ready</h2>
+      <section className={styles.flowSection}>
+        <div className={styles.sectionTitle}>
+          <p>Workflow</p>
+          <h2>Four moves from ticket to clear next step.</h2>
         </div>
-        <div className={styles.pricingGrid}>
-          <article className={styles.priceCardPrimary}>
-            <p className={styles.priceLabel}>Core platform</p>
-            <h3>$99</h3>
-            <p className={styles.priceMeta}>per month / workspace</p>
+        <ol className={styles.flowList}>
+          {steps.map(item => (
+            <li key={item.title} className={styles.flowItem}>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section className={styles.pricingSection}>
+        <div className={styles.sectionTitle}>
+          <p>Pricing</p>
+          <h2>Start with a focused core, expand with AI later.</h2>
+        </div>
+        <div className={styles.priceGrid}>
+          <article className={styles.corePlan}>
+            <h3>Core Plan</h3>
+            <p className={styles.price}>$99<span>/month</span></p>
             <ul>
-              <li>Zendesk app + debug link flow</li>
-              <li>Rule-based diagnosis and confidence scoring</li>
-              <li>Public/internal macro actions</li>
-              <li>Escalation + analytics dashboard</li>
+              <li>Zendesk sidebar app</li>
+              <li>Debug link and packet workflow</li>
+              <li>Rule-based diagnosis</li>
+              <li>Macro + escalation actions</li>
+              <li>Team analytics dashboard</li>
             </ul>
-            <Link href='/register' className={styles.priceCtaPrimary}>
+            <Link href='/register' className={styles.primaryButton}>
               Start Core Plan
             </Link>
           </article>
-          <article className={styles.priceCard}>
-            <p className={styles.priceLabel}>AI Copilot (phase 2)</p>
-            <h3>+$99</h3>
-            <p className={styles.priceMeta}>per month / workspace</p>
+          <article className={styles.addonPlan}>
+            <h3>AI Add-on</h3>
+            <p className={styles.price}>+$99<span>/month</span></p>
             <ul>
-              <li>Richer diagnosis narratives</li>
+              <li>Richer diagnosis narratives and suggestions</li>
               <li>Response draft generation</li>
-              <li>Smarter escalation summaries</li>
-              <li>Higher automation depth</li>
+              <li>Priority escalation intelligence</li>
+              <li>Deeper automation paths</li>
             </ul>
-            <p className={styles.priceSoon}>Planned add-on after core rollout.</p>
+            <p className={styles.note}>Planned phase after core rollout.</p>
           </article>
         </div>
       </section>
 
       <section className={styles.faqSection}>
-        <div className={styles.sectionHead}>
-          <p className={styles.sectionKicker}>FAQ</p>
-          <h2>Everything support leads ask before rollout</h2>
+        <div className={styles.sectionTitle}>
+          <p>FAQ</p>
+          <h2>Quick answers before you deploy.</h2>
         </div>
-        <div className={styles.faqList}>
-          {faqItems.map((item, index) => (
-            <details key={item.q} open={index === 0} className={styles.faqItem}>
+        <div className={styles.faqGrid}>
+          {faq.map((item, index) => (
+            <details key={item.q} open={index === 0} className={styles.faqBox}>
               <summary>{item.q}</summary>
               <p>{item.a}</p>
             </details>
@@ -257,14 +247,14 @@ const LandingPage = () => {
         </div>
       </section>
 
-      <section className={styles.finalCta}>
-        <h2>Deploy once. Let every agent triage with confidence.</h2>
-        <p>Connect your Zendesk workspace now and run your first full debug-to-resolution flow today.</p>
-        <div className={styles.finalActions}>
-          <Link href='/register' className={styles.ctaPrimary}>
+      <section className={styles.closeSection}>
+        <h2>Roll out once. Every agent gets a better playbook.</h2>
+        <p>Connect your Zendesk workspace and run your first production triage cycle today.</p>
+        <div className={styles.closeActions}>
+          <Link href='/register' className={styles.primaryButton}>
             Create Workspace
           </Link>
-          <Link href='/app/dashboard' className={styles.ctaSecondary}>
+          <Link href='/app/dashboard' className={styles.secondaryButton}>
             Open Dashboard
           </Link>
         </div>

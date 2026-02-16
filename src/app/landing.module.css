@@ -1,589 +1,506 @@
 .page {
-  --kt-ink: #0f172a;
-  --kt-muted: #3f4d63;
-  --kt-primary: #0b63f3;
-  --kt-primary-dark: #0a4ecc;
-  --kt-primary-soft: #deebff;
-  --kt-border: #d6dfef;
-  --kt-surface: #ffffff;
-  --kt-surface-soft: #f6f9ff;
-  --kt-shadow: 0 24px 42px rgba(15, 23, 42, 0.1);
+  --ink: #091426;
+  --muted: #4d5f78;
+  --primary: #0f6bff;
+  --primary-dark: #0a4fb8;
+  --line: #d8e3f3;
+  --surface: #ffffff;
+  --surface-soft: #f4f8ff;
+  --accent: #0f766e;
   min-height: 100vh;
-  position: relative;
-  overflow-x: clip;
-  color: var(--kt-ink);
+  color: var(--ink);
   background:
-    radial-gradient(900px 400px at -20% -10%, rgba(11, 99, 243, 0.25), transparent 55%),
-    radial-gradient(900px 480px at 110% -20%, rgba(13, 148, 136, 0.2), transparent 62%),
-    linear-gradient(180deg, #eef5ff 0%, #f8fbff 42%, #ffffff 100%);
+    radial-gradient(1000px 420px at -20% -12%, rgba(15, 107, 255, 0.22), transparent 60%),
+    radial-gradient(800px 360px at 120% 0%, rgba(15, 118, 110, 0.16), transparent 58%),
+    linear-gradient(180deg, #eef5ff 0%, #f8fbff 44%, #ffffff 100%);
   font-family:
+    'Space Grotesk',
+    'IBM Plex Sans',
     'Plus Jakarta Sans',
-    'Manrope',
-    'SF Pro Display',
     -apple-system,
     BlinkMacSystemFont,
     'Segoe UI',
     sans-serif;
 }
 
-.glowLayer {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  opacity: 0.6;
-  background-image:
-    linear-gradient(rgba(86, 122, 187, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(86, 122, 187, 0.06) 1px, transparent 1px);
-  background-size: 44px 44px;
-  mask-image: linear-gradient(180deg, black 35%, transparent 100%);
+.masthead,
+.benefits,
+.panelShowcase,
+.flowSection,
+.pricingSection,
+.faqSection,
+.closeSection {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 24px;
 }
 
 .topbar {
-  position: relative;
-  z-index: 2;
-  max-width: 1180px;
-  margin: 0 auto;
-  padding: 18px 24px 0;
+  padding: 22px 0 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.brandWrap {
+.logoWrap {
   display: flex;
   align-items: center;
   gap: 10px;
+  flex-wrap: wrap;
 }
 
-.brand {
-  font-size: 1.25rem;
-  letter-spacing: -0.02em;
+.logo {
+  font-size: 1.32rem;
   font-weight: 800;
+  letter-spacing: -0.03em;
 }
 
-.brandTag {
-  border: 1px solid var(--kt-border);
-  background: var(--kt-surface);
-  border-radius: 999px;
+.logoHint {
+  border: 1px solid var(--line);
+  background: var(--surface);
   padding: 5px 10px;
-  font-size: 0.76rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
   color: #1e3a8a;
-  font-weight: 600;
+  font-weight: 700;
 }
 
-.navLinks {
+.actionsTop {
   display: flex;
-  align-items: center;
   gap: 10px;
+  align-items: center;
 }
 
-.navGhost,
-.navPrimary {
+.ghostTop,
+.primaryTop {
   text-decoration: none;
   border-radius: 12px;
   padding: 10px 14px;
   font-weight: 700;
   white-space: nowrap;
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease,
-    background-color 0.2s ease;
+  transition: transform 0.2s ease;
 }
 
-.navGhost {
-  border: 1px solid var(--kt-border);
-  color: var(--kt-ink);
-  background: var(--kt-surface);
+.ghostTop {
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink);
 }
 
-.navPrimary {
+.primaryTop {
+  background: var(--primary);
   color: #ffffff;
-  background: var(--kt-primary);
-  box-shadow: 0 10px 24px rgba(11, 99, 243, 0.28);
 }
 
-.navGhost:hover,
-.navPrimary:hover {
+.ghostTop:hover,
+.primaryTop:hover {
   transform: translateY(-1px);
 }
 
-.hero {
-  position: relative;
-  z-index: 1;
-  max-width: 1180px;
-  margin: 0 auto;
-  padding: 54px 24px 24px;
+.heroGrid {
+  padding: 56px 0 20px;
   display: grid;
-  grid-template-columns: 1.04fr 0.96fr;
-  gap: 26px;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
 }
 
-.heroLead {
-  animation: fadeUp 0.55s ease-out both;
+.heroCopy h1 {
+  margin: 0;
+  font-size: clamp(2.15rem, 4.9vw, 3.9rem);
+  letter-spacing: -0.035em;
+  line-height: 1.02;
+  max-width: 760px;
 }
 
-.kicker {
-  margin: 0 0 10px;
-  color: #1d4ed8;
-  letter-spacing: 0.12em;
+.eyebrow {
+  margin: 0 0 12px;
+  color: var(--primary-dark);
   text-transform: uppercase;
-  font-size: 0.75rem;
+  letter-spacing: 0.11em;
+  font-size: 0.76rem;
   font-weight: 800;
 }
 
-.heroTitle {
-  margin: 0;
-  font-size: clamp(2.2rem, 5vw, 3.8rem);
-  line-height: 1.04;
-  letter-spacing: -0.03em;
-  max-width: 720px;
-}
-
-.heroSubtitle {
-  margin: 16px 0 0;
+.heroCopy p {
+  margin: 14px 0 0;
+  color: var(--muted);
+  line-height: 1.68;
+  font-size: 1.04rem;
   max-width: 700px;
-  color: var(--kt-muted);
-  font-size: 1.08rem;
-  line-height: 1.7;
 }
 
-.heroStats {
+.heroButtons {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.primaryButton,
+.secondaryButton {
+  text-decoration: none;
+  border-radius: 12px;
+  padding: 11px 16px;
+  font-weight: 700;
+  white-space: nowrap;
+  transition: transform 0.2s ease;
+}
+
+.primaryButton {
+  background: var(--primary);
+  color: #ffffff;
+  box-shadow: 0 12px 26px rgba(15, 107, 255, 0.3);
+}
+
+.secondaryButton {
+  background: var(--surface);
+  color: var(--ink);
+  border: 1px solid var(--line);
+}
+
+.primaryButton:hover,
+.secondaryButton:hover {
+  transform: translateY(-1px);
+}
+
+.metricPills {
   margin-top: 18px;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 10px;
-  max-width: 660px;
 }
 
-.heroStat {
-  border: 1px solid var(--kt-border);
+.metricPill {
   background: #edf4ff;
+  border: 1px solid var(--line);
   border-radius: 12px;
   padding: 10px 12px;
 }
 
-.heroStat strong {
+.metricPill strong {
   display: block;
-  font-size: 1.12rem;
+  font-size: 1.1rem;
   letter-spacing: -0.02em;
 }
 
-.heroStat span {
+.metricPill span {
   display: block;
-  font-size: 0.84rem;
-  color: #334155;
   margin-top: 2px;
-}
-
-.heroActions {
-  margin-top: 22px;
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
-.ctaPrimary,
-.ctaSecondary {
-  text-decoration: none;
-  border-radius: 13px;
-  padding: 12px 18px;
-  font-weight: 700;
-  white-space: nowrap;
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease,
-    background-color 0.2s ease;
-}
-
-.ctaPrimary {
-  background: var(--kt-primary);
-  color: #ffffff;
-  box-shadow: 0 12px 30px rgba(11, 99, 243, 0.32);
-}
-
-.ctaSecondary {
-  background: var(--kt-surface);
-  border: 1px solid var(--kt-border);
-  color: var(--kt-ink);
-}
-
-.ctaPrimary:hover,
-.ctaSecondary:hover {
-  transform: translateY(-1px);
-}
-
-.heroNote {
-  margin: 14px 0 0;
   color: #475569;
-  font-size: 0.92rem;
+  font-size: 0.82rem;
 }
 
 .heroVisual {
   position: relative;
-  animation: fadeUp 0.68s ease-out both;
 }
 
-.heroImageFrame {
+.heroFrame {
   position: relative;
   width: 100%;
   aspect-ratio: 16 / 10;
   border-radius: 22px;
   overflow: hidden;
-  border: 1px solid #cddcf6;
-  box-shadow: var(--kt-shadow);
+  border: 1px solid #cfdcf1;
+  box-shadow: 0 24px 46px rgba(15, 23, 42, 0.14);
 }
 
 .heroImage {
   object-fit: cover;
 }
 
-.floatCardTop,
-.floatCardBottom {
+.ticketCard,
+.actionCard {
   position: absolute;
   width: min(320px, 84%);
-  border: 1px solid rgba(214, 223, 239, 0.95);
-  background: rgba(255, 255, 255, 0.93);
+  border: 1px solid rgba(216, 227, 243, 0.95);
+  background: rgba(255, 255, 255, 0.94);
   backdrop-filter: blur(6px);
-  border-radius: 14px;
+  border-radius: 13px;
   padding: 10px 12px;
-  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.12);
 }
 
-.floatCardTop {
-  top: 16px;
-  right: 16px;
+.ticketCard {
+  top: 14px;
+  right: 14px;
 }
 
-.floatCardBottom {
-  left: 16px;
-  bottom: 16px;
+.actionCard {
+  left: 14px;
+  bottom: 14px;
 }
 
-.floatCardTop p,
-.floatCardBottom p {
+.ticketCard p,
+.actionCard p {
   margin: 0;
   font-size: 0.75rem;
+  text-transform: uppercase;
   letter-spacing: 0.08em;
   color: #64748b;
-  text-transform: uppercase;
   font-weight: 700;
 }
 
-.floatCardTop strong,
-.floatCardBottom strong {
+.ticketCard strong,
+.actionCard strong {
   display: block;
   margin-top: 4px;
-  font-size: 0.98rem;
+  font-size: 0.95rem;
 }
 
-.floatCardTop span,
-.floatCardBottom span {
+.ticketCard span,
+.actionCard span {
   display: block;
   margin-top: 4px;
   color: #475569;
+  font-size: 0.84rem;
   line-height: 1.45;
-  font-size: 0.85rem;
 }
 
-.trustStrip {
+.ribbon {
   max-width: 1180px;
-  margin: 12px auto 0;
+  margin: 16px auto 0;
   padding: 0 24px;
-}
-
-.trustStrip p {
-  margin: 0;
-  font-size: 0.85rem;
-  color: #475569;
-}
-
-.trustBadges {
-  margin-top: 8px;
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
 }
 
-.trustBadges span {
-  border: 1px solid var(--kt-border);
-  background: var(--kt-surface);
+.ribbon span {
+  border: 1px solid var(--line);
   border-radius: 999px;
+  background: var(--surface);
   padding: 7px 11px;
-  font-size: 0.79rem;
   color: #1e3a8a;
+  font-size: 0.78rem;
   font-weight: 700;
 }
 
-.section,
-.workflowSection,
-.gallerySection,
-.pricingSection,
-.faqSection,
-.finalCta {
-  max-width: 1180px;
-  margin: 0 auto;
-  padding: 36px 24px 0;
-  position: relative;
-  z-index: 1;
-}
-
-.sectionHead {
+.sectionTitle {
   margin-bottom: 14px;
 }
 
-.sectionKicker {
+.sectionTitle p {
   margin: 0 0 8px;
-  color: #1d4ed8;
-  letter-spacing: 0.11em;
+  color: var(--primary-dark);
   text-transform: uppercase;
+  letter-spacing: 0.11em;
   font-size: 0.75rem;
   font-weight: 800;
 }
 
-.sectionHead h2 {
+.sectionTitle h2 {
   margin: 0;
   letter-spacing: -0.02em;
   font-size: clamp(1.6rem, 3vw, 2.2rem);
 }
 
-.outcomeGrid {
+.benefits {
+  margin-top: 36px;
+}
+
+.benefitGrid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 12px;
 }
 
-.outcomeCard {
-  background: var(--kt-surface);
-  border: 1px solid var(--kt-border);
+.benefitCard {
+  background: var(--surface);
+  border: 1px solid var(--line);
   border-radius: 16px;
   padding: 14px;
-  animation: fadeUp 0.46s ease-out both;
 }
 
-.outcomeCard:nth-child(2) {
-  animation-delay: 0.05s;
-}
-
-.outcomeCard:nth-child(3) {
-  animation-delay: 0.1s;
-}
-
-.outcomeValue {
+.benefitCard h3 {
   margin: 0;
-  color: #0a4ecc;
-  font-size: 1.7rem;
-  font-weight: 800;
-  letter-spacing: -0.03em;
-}
-
-.outcomeCard h3 {
-  margin: 6px 0 6px;
   font-size: 1.02rem;
 }
 
-.outcomeCard p {
-  margin: 0;
+.benefitCard p {
+  margin: 8px 0 0;
+  color: #516177;
   line-height: 1.58;
-  color: #475569;
 }
 
-.workflowSection {
-  margin-top: 16px;
-  padding-top: 24px;
-  padding-bottom: 24px;
-  border-radius: 20px;
-  border: 1px solid #dbe6f8;
-  background: var(--kt-surface);
-}
-
-.workflowGrid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 10px;
-}
-
-.stepCard {
-  border: 1px solid #e2e8f5;
-  background: var(--kt-surface-soft);
-  border-radius: 14px;
-  padding: 12px;
-}
-
-.stepIndex {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 28px;
-  height: 28px;
-  border-radius: 999px;
-  background: var(--kt-primary-soft);
-  color: #1d4ed8;
-  font-size: 0.78rem;
-  font-weight: 800;
-}
-
-.stepCard h3 {
-  margin: 10px 0 6px;
-  font-size: 0.98rem;
-}
-
-.stepCard p {
-  margin: 0;
-  color: #475569;
-  line-height: 1.53;
-}
-
-.gallerySection {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 12px;
-}
-
-.galleryCard {
-  overflow: hidden;
-  border-radius: 16px;
-  border: 1px solid #d9e3f2;
-  background: var(--kt-surface);
-  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.06);
-}
-
-.galleryImageWrap {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 16 / 10;
-}
-
-.galleryImage {
-  object-fit: cover;
-}
-
-.galleryCopy {
-  padding: 12px;
-}
-
-.galleryCopy h3 {
-  margin: 0 0 6px;
-  font-size: 1rem;
-}
-
-.galleryCopy p {
-  margin: 0;
-  color: #526276;
-  line-height: 1.5;
-}
-
-.pricingGrid {
+.panelShowcase {
+  margin-top: 18px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 12px;
 }
 
-.priceCardPrimary,
-.priceCard {
-  background: var(--kt-surface);
-  border: 1px solid var(--kt-border);
-  border-radius: 18px;
-  padding: 18px;
+.panelCard {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.06);
 }
 
-.priceCardPrimary {
-  border-color: #b5d0ff;
-  box-shadow: var(--kt-shadow);
+.panelImageWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
 }
 
-.priceLabel {
+.panelImage {
+  object-fit: cover;
+}
+
+.panelText {
+  padding: 12px;
+}
+
+.panelText h3 {
   margin: 0;
-  color: #1e3a8a;
-  text-transform: uppercase;
-  letter-spacing: 0.09em;
-  font-size: 0.74rem;
-  font-weight: 800;
+  font-size: 1rem;
 }
 
-.priceCardPrimary h3,
-.priceCard h3 {
-  margin: 8px 0 4px;
+.panelText p {
+  margin: 8px 0 0;
+  color: #526276;
+  line-height: 1.55;
+}
+
+.flowSection {
+  margin-top: 34px;
+}
+
+.flowList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.flowItem {
+  border: 1px solid var(--line);
+  background: var(--surface-soft);
+  border-radius: 14px;
+  padding: 12px;
+}
+
+.flowItem h3 {
+  margin: 0;
+  font-size: 0.98rem;
+}
+
+.flowItem p {
+  margin: 8px 0 0;
+  color: #526276;
+  line-height: 1.5;
+}
+
+.pricingSection {
+  margin-top: 34px;
+}
+
+.priceGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.corePlan,
+.addonPlan {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 16px;
+}
+
+.corePlan {
+  box-shadow: 0 16px 28px rgba(15, 23, 42, 0.08);
+  border-color: #b9d2ff;
+}
+
+.corePlan h3,
+.addonPlan h3 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.price {
+  margin: 10px 0 10px;
   font-size: 2rem;
+  font-weight: 800;
   letter-spacing: -0.03em;
 }
 
-.priceMeta {
-  margin: 0 0 12px;
+.price span {
+  font-size: 0.9rem;
+  margin-left: 4px;
   color: #526276;
+  font-weight: 600;
 }
 
-.priceCardPrimary ul,
-.priceCard ul {
+.corePlan ul,
+.addonPlan ul {
   margin: 0;
   padding-left: 18px;
   color: #334155;
   line-height: 1.72;
 }
 
-.priceCtaPrimary {
-  margin-top: 14px;
-  display: inline-flex;
-  text-decoration: none;
-  background: var(--kt-primary);
-  color: #ffffff;
-  border-radius: 12px;
-  padding: 11px 15px;
-  font-weight: 700;
-}
-
-.priceSoon {
-  margin: 14px 0 0;
+.note {
+  margin: 12px 0 0;
   color: #526276;
   font-size: 0.9rem;
 }
 
-.faqList {
+.faqSection {
+  margin-top: 34px;
+}
+
+.faqGrid {
   display: grid;
   gap: 10px;
 }
 
-.faqItem {
-  background: var(--kt-surface);
-  border: 1px solid var(--kt-border);
+.faqBox {
+  background: var(--surface);
+  border: 1px solid var(--line);
   border-radius: 12px;
   padding: 2px 12px;
 }
 
-.faqItem summary {
+.faqBox summary {
   cursor: pointer;
   list-style: none;
   font-weight: 700;
   padding: 10px 0;
 }
 
-.faqItem summary::-webkit-details-marker {
+.faqBox summary::-webkit-details-marker {
   display: none;
 }
 
-.faqItem p {
+.faqBox p {
   margin: 0 0 10px;
   color: #526276;
   line-height: 1.6;
 }
 
-.finalCta {
+.closeSection {
   text-align: center;
-  padding-bottom: 72px;
+  margin-top: 40px;
+  padding-bottom: 76px;
 }
 
-.finalCta h2 {
+.closeSection h2 {
   margin: 0;
-  font-size: clamp(1.7rem, 3vw, 2.4rem);
   letter-spacing: -0.02em;
+  font-size: clamp(1.72rem, 3vw, 2.4rem);
 }
 
-.finalCta p {
+.closeSection p {
   margin: 12px auto 0;
-  color: #475569;
   max-width: 780px;
+  color: #526276;
 }
 
-.finalActions {
+.closeActions {
   margin-top: 20px;
   display: flex;
   justify-content: center;
@@ -591,21 +508,21 @@
   gap: 10px;
 }
 
-@media (max-width: 1060px) {
-  .hero {
-    grid-template-columns: 1fr;
+@media (max-width: 1020px) {
+  .heroGrid,
+  .benefitGrid,
+  .panelShowcase,
+  .flowList,
+  .priceGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .heroGrid {
     gap: 16px;
   }
 
-  .heroStats {
-    max-width: none;
-  }
-
-  .outcomeGrid,
-  .workflowGrid,
-  .gallerySection,
-  .pricingGrid {
-    grid-template-columns: 1fr 1fr;
+  .metricPills {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -616,40 +533,22 @@
     gap: 10px;
   }
 
-  .brandWrap {
-    flex-wrap: wrap;
-  }
-
-  .hero {
-    padding-top: 40px;
-  }
-
-  .heroStats {
+  .heroGrid,
+  .benefitGrid,
+  .panelShowcase,
+  .flowList,
+  .priceGrid {
     grid-template-columns: 1fr;
   }
 
-  .floatCardTop,
-  .floatCardBottom {
+  .heroGrid {
+    padding-top: 36px;
+  }
+
+  .ticketCard,
+  .actionCard {
     position: static;
     width: 100%;
     margin-top: 10px;
-  }
-
-  .outcomeGrid,
-  .workflowGrid,
-  .gallerySection,
-  .pricingGrid {
-    grid-template-columns: 1fr;
-  }
-}
-
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
   }
 }
