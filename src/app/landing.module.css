@@ -455,6 +455,7 @@
 
 .faqGrid {
   display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 10px;
 }
 
@@ -513,7 +514,8 @@
   .benefitGrid,
   .panelShowcase,
   .flowList,
-  .priceGrid {
+  .priceGrid,
+  .faqGrid {
     grid-template-columns: 1fr 1fr;
   }
 
@@ -537,7 +539,8 @@
   .benefitGrid,
   .panelShowcase,
   .flowList,
-  .priceGrid {
+  .priceGrid,
+  .faqGrid {
     grid-template-columns: 1fr;
   }
 

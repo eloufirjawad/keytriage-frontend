@@ -73,6 +73,26 @@ const faq = [
   {
     q: 'Can we start without AI?',
     a: 'Yes. The core workflow is deterministic and production-ready. AI is an optional upgrade later.'
+  },
+  {
+    q: 'How long does setup take for a new workspace?',
+    a: 'Most teams complete setup in under 10 minutes: install app, connect Zendesk, and run the first packet flow.'
+  },
+  {
+    q: 'Will all agents in our Zendesk account get access?',
+    a: 'Yes. After admin onboarding, agent users can access the app in Zendesk and use the same standardized workflow.'
+  },
+  {
+    q: 'Does KeyTriage replace our existing macros and processes?',
+    a: 'No. It strengthens your current support process by adding structured diagnosis, better macro targeting, and cleaner escalations.'
+  },
+  {
+    q: 'Can we monitor team performance over time?',
+    a: 'Yes. The dashboard tracks packet completion, top failure categories, escalation rates, and ticket-resolution trends.'
+  },
+  {
+    q: 'Is this suitable for MVP rollout today?',
+    a: 'Yes. The core plan is built for immediate operational use, with AI enhancement available as a later upgrade.'
   }
 ]
 
@@ -235,7 +255,7 @@ const LandingPage = () => {
       <section className={styles.faqSection}>
         <div className={styles.sectionTitle}>
           <p>FAQ</p>
-          <h2>Quick answers before you deploy.</h2>
+          <h2>Frequently asked questions before rollout.</h2>
         </div>
         <div className={styles.faqGrid}>
           {faq.map((item, index) => (
