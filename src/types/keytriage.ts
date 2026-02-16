@@ -59,6 +59,16 @@ export type PacketSubmitRequest = {
   answers?: {
     intent?: string
     symptom?: string
+    prompt_behavior?: string
+    passkey_exists?: string
+    same_device_as_enrollment?: string
+    account_match?: string
+    used_cross_device?: string
+    cross_device_step?: string
+    network_context?: string
+    managed_device?: string
+    login_url?: string
+    [key: string]: unknown
   }
   environment?: {
     os?: string

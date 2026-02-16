@@ -135,6 +135,15 @@ const DebugPacketPage = () => {
   const [consent, setConsent] = useState(false)
   const [intent, setIntent] = useState('login')
   const [symptom, setSymptom] = useState('prompt did not appear')
+  const [promptBehavior, setPromptBehavior] = useState('not_applicable')
+  const [passkeyExists, setPasskeyExists] = useState('not_sure')
+  const [sameDeviceAsEnrollment, setSameDeviceAsEnrollment] = useState('not_sure')
+  const [accountMatch, setAccountMatch] = useState('not_sure')
+  const [usedCrossDevice, setUsedCrossDevice] = useState('not_sure')
+  const [crossDeviceStep, setCrossDeviceStep] = useState('not_applicable')
+  const [networkContext, setNetworkContext] = useState('home_or_stable')
+  const [managedDevice, setManagedDevice] = useState('not_sure')
+  const [loginUrl, setLoginUrl] = useState('')
   const [errorMessage, setErrorMessage] = useState('')
   const [screenshotFile, setScreenshotFile] = useState<File | null>(null)
 
@@ -230,7 +239,19 @@ return
 
     const payload: PacketSubmitRequest = {
       consent,
-      answers: { intent, symptom },
+      answers: {
+        intent,
+        symptom,
+        prompt_behavior: promptBehavior,
+        passkey_exists: passkeyExists,
+        same_device_as_enrollment: sameDeviceAsEnrollment,
+        account_match: accountMatch,
+        used_cross_device: usedCrossDevice,
+        cross_device_step: crossDeviceStep,
+        network_context: networkContext,
+        managed_device: managedDevice,
+        login_url: loginUrl.trim()
+      },
       environment,
       capability,
       error_message: errorMessage.trim()
@@ -363,6 +384,131 @@ return
                     <MenuItem value='not sure'>Not sure</MenuItem>
                   </TextField>
                 </FormControl>
+
+                <FormControl fullWidth>
+                  <FormLabel>How did the prompt behave?</FormLabel>
+                  <TextField
+                    select
+                    value={promptBehavior}
+                    onChange={event => setPromptBehavior(event.target.value)}
+                    sx={{ mt: 1 }}
+                  >
+                    <MenuItem value='not_applicable'>Not applicable / not sure</MenuItem>
+                    <MenuItem value='never_shown'>Never shown</MenuItem>
+                    <MenuItem value='shown_then_closed'>Shown then closed</MenuItem>
+                    <MenuItem value='shown_then_error'>Shown then error</MenuItem>
+                    <MenuItem value='completed_but_rejected'>Completed but rejected</MenuItem>
+                  </TextField>
+                </FormControl>
+
+                <FormControl fullWidth>
+                  <FormLabel>Does this account already have a passkey?</FormLabel>
+                  <TextField
+                    select
+                    value={passkeyExists}
+                    onChange={event => setPasskeyExists(event.target.value)}
+                    sx={{ mt: 1 }}
+                  >
+                    <MenuItem value='yes'>Yes</MenuItem>
+                    <MenuItem value='no'>No</MenuItem>
+                    <MenuItem value='not_sure'>Not sure</MenuItem>
+                  </TextField>
+                </FormControl>
+
+                <FormControl fullWidth>
+                  <FormLabel>Are you using the same device used for passkey enrollment?</FormLabel>
+                  <TextField
+                    select
+                    value={sameDeviceAsEnrollment}
+                    onChange={event => setSameDeviceAsEnrollment(event.target.value)}
+                    sx={{ mt: 1 }}
+                  >
+                    <MenuItem value='yes'>Yes</MenuItem>
+                    <MenuItem value='no'>No</MenuItem>
+                    <MenuItem value='not_sure'>Not sure</MenuItem>
+                  </TextField>
+                </FormControl>
+
+                <FormControl fullWidth>
+                  <FormLabel>Does the account/profile on this device match the enrolled one?</FormLabel>
+                  <TextField
+                    select
+                    value={accountMatch}
+                    onChange={event => setAccountMatch(event.target.value)}
+                    sx={{ mt: 1 }}
+                  >
+                    <MenuItem value='same_account'>Yes, same account</MenuItem>
+                    <MenuItem value='different_account'>No, different account</MenuItem>
+                    <MenuItem value='not_sure'>Not sure</MenuItem>
+                  </TextField>
+                </FormControl>
+
+                <FormControl fullWidth>
+                  <FormLabel>Were you trying a cross-device passkey flow?</FormLabel>
+                  <TextField
+                    select
+                    value={usedCrossDevice}
+                    onChange={event => setUsedCrossDevice(event.target.value)}
+                    sx={{ mt: 1 }}
+                  >
+                    <MenuItem value='not_sure'>Not sure</MenuItem>
+                    <MenuItem value='yes'>Yes</MenuItem>
+                    <MenuItem value='no'>No</MenuItem>
+                  </TextField>
+                </FormControl>
+
+                <FormControl fullWidth>
+                  <FormLabel>If cross-device was used, where did it fail?</FormLabel>
+                  <TextField
+                    select
+                    value={crossDeviceStep}
+                    onChange={event => setCrossDeviceStep(event.target.value)}
+                    sx={{ mt: 1 }}
+                  >
+                    <MenuItem value='not_applicable'>Not applicable / not sure</MenuItem>
+                    <MenuItem value='qr_not_visible'>QR/prompt never appeared</MenuItem>
+                    <MenuItem value='phone_not_detected'>Phone/security key not detected</MenuItem>
+                    <MenuItem value='phone_prompt_cancelled'>Prompt cancelled on second device</MenuItem>
+                    <MenuItem value='approved_on_phone_but_failed'>Approved on phone but still failed</MenuItem>
+                  </TextField>
+                </FormControl>
+
+                <FormControl fullWidth>
+                  <FormLabel>Network context during failure</FormLabel>
+                  <TextField
+                    select
+                    value={networkContext}
+                    onChange={event => setNetworkContext(event.target.value)}
+                    sx={{ mt: 1 }}
+                  >
+                    <MenuItem value='home_or_stable'>Home / stable network</MenuItem>
+                    <MenuItem value='corporate_vpn_proxy'>Corporate network + VPN/proxy</MenuItem>
+                    <MenuItem value='unstable_public_wifi'>Public/unstable Wi-Fi</MenuItem>
+                    <MenuItem value='restrictive_enterprise_network'>Enterprise network restrictions</MenuItem>
+                  </TextField>
+                </FormControl>
+
+                <FormControl fullWidth>
+                  <FormLabel>Is this a managed/corporate device?</FormLabel>
+                  <TextField
+                    select
+                    value={managedDevice}
+                    onChange={event => setManagedDevice(event.target.value)}
+                    sx={{ mt: 1 }}
+                  >
+                    <MenuItem value='yes'>Yes</MenuItem>
+                    <MenuItem value='no'>No</MenuItem>
+                    <MenuItem value='not_sure'>Not sure</MenuItem>
+                  </TextField>
+                </FormControl>
+
+                <TextField
+                  fullWidth
+                  label='Login URL where failure happened (optional)'
+                  value={loginUrl}
+                  onChange={event => setLoginUrl(event.target.value)}
+                  placeholder='https://example.com/login'
+                />
 
                 <Stack spacing={1}>
                   <Typography variant='h6'>Quick checks</Typography>
