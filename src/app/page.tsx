@@ -1,6 +1,8 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
+import FaqAccordion from '@/components/landing/FaqAccordion'
+
 import styles from './landing.module.css'
 
 const heroImage =
@@ -261,14 +263,7 @@ const LandingPage = () => {
           <p>FAQ</p>
           <h2>Frequently asked questions before rollout.</h2>
         </div>
-        <div className={styles.faqGrid}>
-          {faq.map((item, index) => (
-            <details key={item.q} open={index === 0} className={styles.faqBox}>
-              <summary>{item.q}</summary>
-              <p>{item.a}</p>
-            </details>
-          ))}
-        </div>
+        <FaqAccordion items={faq} className={styles.faqGrid} />
       </section>
 
       <section className={styles.closeSection}>
